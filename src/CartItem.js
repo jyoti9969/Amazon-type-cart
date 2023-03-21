@@ -12,7 +12,21 @@ class CartItem extends React.Component {
     }
     // Arrow function is used to remove bind function  this.increaseNumber.bind()
     increaseNumber=()=>{
-console.log("this",this.state)
+// console.log("this",this.state)
+
+this.setState((prevState)=>{
+    return{
+        qty: prevState.qty+1
+    }
+})
+    }
+
+    decreaseNumber=()=>{
+        this.setState((prevState)=>{
+            return{
+                 qty:prevState.qty-1
+            }
+        })
     }
     render() {
         const { price, title, qty } = this.state;
@@ -36,7 +50,8 @@ console.log("this",this.state)
                        
                     <img className='action-icons'
                         alt="decrease"
-                        src="https://cdn-icons-png.flaticon.com/128/992/992683.png" />
+                        src="https://cdn-icons-png.flaticon.com/128/992/992683.png"
+                        onClick={this.decreaseNumber} />
                     <img className='action-icons'
                         alt="delete"
                         src="https://cdn-icons-png.flaticon.com/128/3096/3096687.png" />
